@@ -1,0 +1,23 @@
+﻿
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="center">
+	<div id="head-back" class="col-md-12">
+		<h2 id="headline">Personel Takip Sistemi</h2>
+		<hr />
+	</div>
+	<div class="col-md-12 home-btn">
+		@Html.ActionLink("Departman", "Index", "Department", null, new { @class = "btn btn-info btn-sm" })
+	</div>
+	<div class="col-md-12 home-btn">
+		@Html.ActionLink("Personel", "Index", "Employee", null, new { @class = "btn btn-info btn-sm" })
+	</div>
+	<div class="col-md-12 home-btn">
+		@Html.ActionLink("Personel İzin", "Index", "Permission", null, new { @class = "btn btn-info btn-sm" })
+	</div>
+</div>
+
+

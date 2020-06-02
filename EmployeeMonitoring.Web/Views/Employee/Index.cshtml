@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Employee>
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row center">
+	<div class="col-md-12">
+		<div id="head-back" class="col-md-12">
+			<h2 id="headline">Personeller</h2>
+			<hr />
+		</div>
+		@if (TempData["message"] != null)
+		{
+			var message = JsonConvert.DeserializeObject<AlertMessage>(TempData["message"] as String);
+			<div class="row">
+				<div class="col-md-12">
+					<div class="alert alert-@message.AlertType">
+						@message.Message
+					</div>
+				</div>
+			</div>
+		}
+		<div class="col-md-12">
+			<table class="table table-hover" id="emp-table">
+				@Html.ActionLink("Yeni Ekle", "Create", "Employee", null, new { @class = "btn btn-success btn-sm", @id = "btn-create-emp" })
+				<thead>
+					<tr>
+						<th scope="col">Personel İsmi</th>
+						<th scope="col">Departmanı</th>
+						<th scope="col">İşe Başlama Tarihi</th>
+						<th scope="col">Yıllık İzin</th>
+						<th scope="col"> </th>
+					</tr>
+				</thead>
+				<tbody>
+					@if (Model.Count() == 0)
+					{
+						<div class="alert alert-warning">Personel yok</div>
+					}
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td>@item.Name @item.Surname</td>
+							<td>@item.Department.Name</td>
+							<td>@item.StartDate.ToString().TrimEnd('0', ':')</td>
+							<td>
+								@item.AnnualLeave gün
+							</td>
+							<td>
+								@Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "btn btn-secondary btn-sm" })
+								@Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+								@Html.ActionLink("İzin Oluştur", "Create", "Permission", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" })
+								@Html.ActionLink("İzinler", "List", "Permission", new { id = item.Id }, new { @class = "btn btn-dark btn-sm" })
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+

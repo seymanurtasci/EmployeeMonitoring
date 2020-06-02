@@ -1,0 +1,54 @@
+﻿@model Permission
+@{
+	ViewData["Title"] = "Edit";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row center">
+	<div id="head-back" class="col-md-12">
+		<h3 id="headline">İzin Güncelle</h3>
+		<hr />
+	</div>
+	<div class="col-md-12">
+		@if (TempData["message"] != null)
+		{
+			var message = JsonConvert.DeserializeObject<AlertMessage>(TempData["message"] as String);
+			<div class="row">
+				<div class="col-md-12">
+					<div class="alert alert-@message.AlertType">
+						@message.Message
+					</div>
+				</div>
+			</div>
+		}
+	</div>
+	<div class="col-md-8">
+		<form asp-controller="Permission" asp-action="Edit" method="post">
+			<input type="hidden" name="Id" value="@Model.Id" />
+			<p>@ViewBag.Name @ViewBag.Surname</p>
+			<div class="form-group row">
+				<label asp-for="StartDate" class="col-sm-2 col-form-label">İzin Başlangıç Tarihi:</label>
+				<div class="col-sm-6">
+					<input type="datetime" id="txtStartDate" class="form-control" asp-for="StartDate">
+					<small id="emailHelp" class="form-text text-muted">gün/ay/yıl şeklinde giriniz</small>
+					<span asp-validation-for="StartDate" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label asp-for="EndDate" class="col-sm-2 col-form-label">İzin Bitiş Tarihi:</label>
+				<div class="col-sm-6">
+					<input type="datetime" id="txtEndDate" class="form-control" asp-for="EndDate">
+					<small id="emailHelp" class="form-text text-muted">gün/ay/yıl şeklinde giriniz</small>
+					<span asp-validation-for="EndDate" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-6 offset-sm-2">
+					<button id="btn-create" type="submit" class="btn btn-primary">Kaydet</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+

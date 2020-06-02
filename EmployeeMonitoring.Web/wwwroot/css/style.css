@@ -1,0 +1,53 @@
+﻿.table td {
+    text-align: center;
+}
+
+.table{
+    width:60%;
+    margin-left:20%;
+}
+
+.table th{
+    text-align:center;
+}
+
+#headline {
+    padding-top: 2%;    
+}
+
+#head-back {
+    margin-bottom:5%;
+}
+
+.btn-primary {
+    float: right;
+}
+
+#btn-create{
+    margin-left:70%;
+    margin-bottom:2%;
+}
+
+.home-btn{
+    margin-top: 1%;
+    margin-left:5%;
+}
+
+.center {
+    max-width: 80%;
+    margin: auto;
+}
+
+#emp-table {
+    width: 100%;
+    margin-left: 0;
+}
+
+#btn-create-emp {
+    margin-left: 87%;
+    margin-bottom: 2%;
+}
+
+#per-p{
+    float:right;
+}
